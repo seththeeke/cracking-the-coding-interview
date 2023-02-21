@@ -1,4 +1,9 @@
+import java.util.HashSet;
+import java.util.Set;
+
 // Implement an algorithm to determine if a string has all unique characters.
+
+public class IsUnique {
 
 /*
 
@@ -10,8 +15,8 @@ For each character, add it to the set, if the character already exists, then ret
 // Space => O(n) where n is the length of the input
 // Time => O(n) where n is the length of the input
 public boolean isUnique(String input) {
-    Set<Character> charSet = new Set<>();
-    for (int i = 0; i < input.length; i++) {
+    Set<Character> charSet = new HashSet<>();
+    for (int i = 0; i < input.length(); i++) {
         if (charSet.contains(input.charAt(i))) {
             return false;
         }
@@ -33,9 +38,9 @@ checking. If the character you are reading exists in the substring of the remain
 
 // Space => O(n) where n is the length of the input - 1 because we are creating a new substring on each pass
 // Time => O(n) where n is the length of the input
-public boolean isUnique(String input) {
-    for (int i = 0; i < input.length - 1; i++) {
-        char currChar = input[i];
+public boolean isUniqueNoSet(String input) {
+    for (int i = 0; i < input.length() - 1; i++) {
+        char currChar = input.charAt(i);
         String substring = input.substring(i+1);
         if (substring.indexOf(currChar) > -1) {
             return false;
@@ -43,3 +48,6 @@ public boolean isUnique(String input) {
     }
     return true;
 }
+
+}
+

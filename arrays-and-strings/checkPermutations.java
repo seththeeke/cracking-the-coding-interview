@@ -1,4 +1,11 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 // Given two strings, write a method to determine if one is a permutation of the other
+
+public class CheckPermutations {
 
 /*
 
@@ -10,7 +17,7 @@ and then check if they are equal.
 // Space => O(n) where n is the length of the two strings
 // Time => O(nlogn) where n is the length of the two strings. This is because of the quicksort from Arrays.sort
 public boolean checkPermutations(String one, String two) {
-    if (one.length != two.length) {
+    if (one.length() != two.length()) {
         return false;
     }
 
@@ -34,19 +41,19 @@ can then verify the permutation by going through all entries in the map and ensu
 
 // Space => O(n) where n is the length of the strings. It comes from the creation of the map objects
 // Time => O(n) where n is the length of the strings. This is from building the map from all characters
-public boolean checkPermutations(String one, String two) {
-    if (one.length != two.length) {
+public boolean checkPermutationsCharCount(String one, String two) {
+    if (one.length() != two.length()) {
         return false;
     }
 
     Map<Character, Integer> charCountOne = getCharCountForString(one);
     Map<Character, Integer> charCountTwo = getCharCountForString(two);
 
-    if (charCountOne.getKeys().length != charCountTwo.getKeys().length) {
+    if (charCountOne.keySet().size() != charCountTwo.keySet().size()) {
         return false;
     }
 
-    for (Entry<Character, Integer> entry : charCountOne) {
+    for (Entry<Character, Integer> entry : charCountOne.entrySet()) {
         Character key = entry.getKey();
         if (charCountTwo.get(key) != entry.getValue()) {
             return false;
@@ -58,13 +65,16 @@ public boolean checkPermutations(String one, String two) {
 
 private Map<Character, Integer> getCharCountForString(String str) {
     Map<Character, Integer> charCount = new HashMap<>();
-    for (int i = 0; i < str.length; i++) {
+    for (int i = 0; i < str.length(); i++) {
         Character currChar = str.charAt(i);
         if (!charCount.containsKey(currChar)) {
             charCount.put(currChar, 0);
         }
-        charCount.put(currChat, charCount.get(currChar) + 1);
+        charCount.put(currChar, charCount.get(currChar) + 1);
     }
 
     return charCount;
 }
+
+}
+
